@@ -40,12 +40,13 @@ async def forward(bot: ace, m: Message):
                     from_chat_id=i_chat,
                     message_id=i
                 )
-                forwarded_messages.append(forwarded_message.json())  # Serialize and append to the list
+                forwarded_messages.append(forwarded_message)  # Serialize and append to the list
                 time.sleep(2)
             except Exception:
                 continue
     except Exception as e:
         await m.reply_text(str(e))
+
 
     # Save the list of forwarded messages as a JSON file
     if chat_name:
